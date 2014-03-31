@@ -11,6 +11,7 @@ To use this:
 *  then add your search terms via the url. It should look something like this:
 
 http://localhost/op3nvoice-player/?terms=something
+
 http://localhost/op3nvoice-player/?terms=close|monkey|desert|does
 
 
