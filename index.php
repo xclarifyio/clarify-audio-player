@@ -1,12 +1,21 @@
 <?php
 
+include 'vendor/autoload.php';
+
 $terms = $_GET['terms'];
 $terms = preg_replace("/[^A-Za-z0-9|]/", "", $terms);
 
-//todo: initialize object
-//todo: perform search
-//todo: get search results
-//todo: json decode things
+$audio = new Op3nvoice\Audio($apikey);
+$items = $audio->search($terms);
+
+$search_terms = json_encode($items['search_terms']);
+$item_results = json_encode($items['item_results']);
+
+$audiokey = $items['_links']['item'][0]['href'];
+$tracks = $audio->tracks($audiokey)['tracks'];
+$mediaUrl = $tracks[0]['media_url'];
+//todo: get the duration from the tracks record, currently coming back as zero
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -32,22 +41,22 @@ $terms = preg_replace("/[^A-Za-z0-9|]/", "", $terms);
                 o3vPlayer.jPlayerOptions.swfPath = 'scripts/jquery';
 
                 // Set to the playback URL for the audio file.
-                var mediaURL = 'SET_URL_TO_RECORDING_FOR_createPlayer_CALL';
+                var mediaURL = '<?php echo $mediaUrl; ?>';
 
                 ////////////////////////////////////////////////////////
 
                 // This is a sample search_terms array from a SearchCollection
-                var searchTerms = [{"term":"pizza"},{"term":"beer"},{"term":"party"}];
+                var searchTerms = <?php echo $search_terms; ?>;
 
                 // This is a sample "ItemResult" object from a SearchCollection JSON
                 // object. It is one item in the item_results array.
-                var itemResult = {"score":0.054899603,"term_results":[{"score":1,"matches":[{"type":"text","field":"description","hits":[{"start":10,"end":14}]},{"type":"audio","track":0,"hits":[{"start":12.12,"end":12.23}]}]},{"score":1,"matches":[{"type":"audio","track":0,"hits":[{"start":4.56,"end":4.66}]}]},{"score":1,"matches":[{"type":"audio","track":0,"hits":[{"start":6.18,"end":6.54}]}]}]};
+                var itemResult =  <?php echo substr($item_results, 1, -1); ?>;
 
                 ////////////////////////////////////////////////////////
                 // Create a player and add in search results marks
-                var convDuration = 55;
+                var convDuration = 71;
                 var player = o3vPlayer.createPlayer("#player_instance_1", mediaURL, convDuration,{volume:0.5});
-                o3vPlayer.addItemResultMarkers(player,convDuration,itemResult,searchTerms);
+                o3vPlayer.addItemResultMarkers(player, convDuration, itemResult, searchTerms);
 
                 ////////////////////////////////////////////////////////
                 // Create words tags for SearchCollection.
@@ -72,6 +81,7 @@ $terms = preg_replace("/[^A-Za-z0-9|]/", "", $terms);
         <br>
         Player Example:
         <br>
+        <em>If no audio player appears, there was not a search result found.</em>
         <br>
         <div id="player_1_search_tags" class="o3v-search-tag-box"></div>
         <div id="player_instance_1"></div>
