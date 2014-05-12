@@ -1,13 +1,13 @@
-Op3nvoice Audio Player
+OP3Nvoice Audio Player
 ======================
 
-This is a proof of concept audio player that integrates with the Op3nvoice search library.
+This is a proof of concept audio player that integrates with the OP3Nvoice search library.
 
 This uses the PHP library available here: https://github.com/Op3nvoice/op3nvoice-php
 
 To use this:
 *  you should only have to configure your API Key (line 8) and set the audio duration (line 57). This audio duration will be available from the search results eventually.
-*  download the Op3nvoice PHP library from above and simply copy the src/ and vendor/ directories into the root directory of the player.
+*  download the OP3Nvoice PHP library from above and simply copy the src/ and vendor/ directories into the root directory of the player.
 *  then add your search terms via the url. It should look something like this:
 
 http://localhost/op3nvoice-player/?terms=something
