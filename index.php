@@ -12,10 +12,10 @@ $search_terms = json_encode($items['search_terms']);
 $item_results = json_encode($items['item_results']);
 
 $audiokey = $items['_links']['items'][0]['href'];
-$tracks = $audio->tracks($audiokey)['tracks'];
-$mediaUrl = $tracks[0]['media_url'];
-//todo: get the duration from the tracks record, currently coming back as zero
+$tracks = $video->tracks->load($audiokey)['tracks'];
 
+$mediaUrl = $tracks[0]['media_url'];
+$duration = $tracks[0]['duration'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -54,7 +54,7 @@ $mediaUrl = $tracks[0]['media_url'];
 
                 ////////////////////////////////////////////////////////
                 // Create a player and add in search results marks
-                var convDuration = 71;
+                var convDuration = <?php echo $duration; ?>;
                 var player = o3vPlayer.createPlayer("#player_instance_1", mediaURL, convDuration,{volume:0.5});
                 o3vPlayer.addItemResultMarkers(player, convDuration, itemResult, searchTerms);
 
