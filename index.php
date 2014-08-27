@@ -5,14 +5,14 @@ include 'vendor/autoload.php';
 $terms = $_GET['terms'];
 $terms = preg_replace("/[^A-Za-z0-9|]/", "", $terms);
 
-$audio = new OP3Nvoice\Bundle($apikey);
-$items = $audio->search($terms);
+$bundle = new Clarify\Bundle($apikey);
+$items = $bundle->search($terms);
 
 $search_terms = json_encode($items['search_terms']);
 $item_results = json_encode($items['item_results']);
 
-$audiokey = $items['_links']['items'][0]['href'];
-$tracks = $video->tracks->load($audiokey)['tracks'];
+$bundlekey = $items['_links']['items'][0]['href'];
+$tracks = $bundle->tracks->load($bundlekey)['tracks'];
 
 $mediaUrl = $tracks[0]['media_url'];
 $duration = $tracks[0]['duration'];
@@ -21,7 +21,7 @@ $duration = $tracks[0]['duration'];
 <html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-        <title>OP3Nvoice Player Demo</title>
+        <title>Clarify Player Demo</title>
         <style type="text/css">
             body { font-family: sans-serif; }
         </style>
@@ -77,7 +77,7 @@ $duration = $tracks[0]['duration'];
     
     </head>
     <body>
-        <h3>OP3Nvoice JPlayer Demo</h3>
+        <h3>Clarify JPlayer Demo</h3>
         <br>
         Player Example:
         <br>
