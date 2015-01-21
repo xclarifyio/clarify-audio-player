@@ -50,7 +50,7 @@ $bundles = $items['_links']['items'];
                     $duration = $tracks[0]['duration'];
                     ?>
                 // Set to the playback URL for the video file(s).
-                var mediaURLs<?php echo $key; ?> = { mp3:"<?php echo $mediaUrl; ?>"};
+                var mediaURLs<?php echo $key; ?> = '<?php echo $mediaUrl; ?>';
                 // This is a sample "ItemResult" object from a SearchCollection JSON
                 // object. It is one item in the item_results array.
                 var itemResult<?php echo $key; ?> =  <?php echo json_encode($item_results[$key]); ?>;
