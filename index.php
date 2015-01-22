@@ -49,31 +49,32 @@ $bundles = $items['_links']['items'];
                     $mediaUrl = $tracks[0]['media_url'];
                     $duration = $tracks[0]['duration'];
                     ?>
-                // Set to the playback URL for the video file(s).
-                var mediaURLs<?php echo $key; ?> = '<?php echo $mediaUrl; ?>';
-                // This is a sample "ItemResult" object from a SearchCollection JSON
-                // object. It is one item in the item_results array.
-                var itemResult<?php echo $key; ?> =  <?php echo json_encode($item_results[$key]); ?>;
-                ////////////////////////////////////////////////////////
 
-                // Create a player and add in search results marks
-                var player = o3vPlayer.createPlayer("#player_instance_<?php echo $key; ?>", mediaURLs<?php echo $key; ?>, <?php echo $duration; ?>, {volume:0.5});
-                o3vPlayer.addItemResultMarkers(player, <?php echo $duration; ?>,itemResult<?php echo $key; ?>, searchTerms);
+                    // Set to the playback URL for the audio file(s).
+                    var mediaURLs<?php echo $key; ?> = '<?php echo $mediaUrl; ?>';
+                    // This is a sample "ItemResult" object from a SearchCollection JSON
+                    // object. It is one item in the item_results array.
+                    var itemResult<?php echo $key; ?> =  <?php echo json_encode($item_results[$key]); ?>;
+                    ////////////////////////////////////////////////////////
 
-                ////////////////////////////////////////////////////////
-                // Create words tags for SearchCollection.
+                    // Create a player and add in search results marks
+                    var player = o3vPlayer.createPlayer("#player_instance_<?php echo $key; ?>", mediaURLs<?php echo $key; ?>, <?php echo $duration; ?>, {volume:0.5});
+                    o3vPlayer.addItemResultMarkers(player, <?php echo $duration; ?>,itemResult<?php echo $key; ?>, searchTerms);
 
-                for (var i=0,c=searchTerms.length;i<c;i++) {
-                    var term = searchTerms[i].term;
-                    var dtag = document.createElement('div');
-                    $(dtag).addClass("o3v-search-tag o3v-search-color-"+i);
-                    $(dtag).text(term);
+                    ////////////////////////////////////////////////////////
+                    // Create words tags for SearchCollection.
+
+                    for (var i=0,c=searchTerms.length;i<c;i++) {
+                        var term = searchTerms[i].term;
+                        var dtag = document.createElement('div');
+                        $(dtag).addClass("o3v-search-tag o3v-search-color-"+i);
+                        $(dtag).text(term);
+                        $("#player_<?php echo $key; ?>_search_tags").append(dtag);
+                    }
+                    dtag = document.createElement('div');
+                    $(dtag).addClass("o3v-clear");
                     $("#player_<?php echo $key; ?>_search_tags").append(dtag);
-                }
-                dtag = document.createElement('div');
-                $(dtag).addClass("o3v-clear");
-                $("#player_<?php echo $key; ?>_search_tags").append(dtag);
-                ////////////////////////////////////////////////////////
+                    ////////////////////////////////////////////////////////
                 <?php } ?>
             });
         </script>
