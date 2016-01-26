@@ -9,7 +9,7 @@
  *
  */
 
-    var o3vPlayer = (function() {
+    var o3vPlayer = (function($) {
      
 	/* WARNING: Due to flash security, running this from html as a local file
          (ie. file:// URL) will not allow the flash to run properly.
@@ -254,6 +254,6 @@
 
 	}; // end of return statement
 	
-    })();
+    })(jQuery);
 
     
