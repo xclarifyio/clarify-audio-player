@@ -83,7 +83,7 @@ $bundles = $items['_links']['items'];
     <body>
         <h3>Clarify JPlayer Audio Demo</h3>
         <form action="" method="GET">
-            Search terms: <input name="terms" value="" />
+            Search terms: <input name="terms" value="<?php print $terms; ?>" />
             <input type="submit" />
         </form>
         <br>

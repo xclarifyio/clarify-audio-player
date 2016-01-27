@@ -1,5 +1,5 @@
 {
     "require": {
-        "clarify/clarify-helper": "~1.2.1"
+        "clarify/clarify-helper": "~2.0.1"
     }
 }
