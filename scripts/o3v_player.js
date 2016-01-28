@@ -1,6 +1,6 @@
 /*
- * Clarify audio player
- * Copyright (c) 2014 Clarify Inc All rights reserved.
+ * Clarify Audio Player
+ * Copyright (c) 2014-2016 Clarify, Inc - All rights reserved.
  *
  * Makes use of:
  *  jquery - GPL/MIT license
