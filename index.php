@@ -1,6 +1,13 @@
 <?php
 
-include 'creds.php';
+if (!file_exists('credentials.php')) {
+    die("To get started, you need to rename credentials-dist.php to credentials.php and add your API key.");
+}
+if (!file_exists('vendor/autoload.php')) {
+    die("To get started, you need to use Composer to install the required PHP libraries.");
+}
+
+include 'credentials.php';
 include 'vendor/autoload.php';
 
 $terms = $_GET['terms'];
