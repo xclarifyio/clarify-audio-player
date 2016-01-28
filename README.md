@@ -1,23 +1,17 @@
 Clarify Audio Player
 ======================
 
-This is a proof of concept audio player that integrates with the Clarify API search library.
-
-This uses the PHP library available here: https://github.com/Clarify/clarify-php
+This is a basic search page that uses the Clarify PHP library, available here: https://github.com/Clarify/clarify-php
 
 To use this:
-*  you should only have to configure your API Key (line 8) and set the audio duration (line 57). This audio duration will be available from the search results eventually.
-*  download the Clarify PHP library from above and simply copy the src/ and vendor/ directories into the root directory of the player.
-*  then add your search terms via the url. It should look something like this:
 
-http://localhost/clarify-player/?terms=something
+*  Download this package from Github;
+*  Rename credentials-dist.php to credentials.php and add your API key;
+*  Run `` composer install `` to get the required PHP library;
+*  Load this folder in your favorite browser, the URL will be something like: http://localhost/clarify-audio-player/
+*  Fill in your search terms and hit submit;
+*  If you need audio, load what you need from here: http://media.clarify.io/
 
-http://localhost/clarify-player/?terms=close|monkey|desert|does
+Note: If there are no search results, the player does not display. We should improve that.
 
-
-
-This can be improved in a number of ways:
-
-*  ~~this only shows the first resulting file, we could extend it to show all of them;~~
-*  ~~the duration should be included in the API call so we don't have to hardcode it here (line 57);~~
-*  if there are no search results, we could display a more useful/friendly message.
+More quickstarts are available here: http://docs.clarify.io/quickstarts/
