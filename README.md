@@ -1,7 +1,15 @@
 Clarify Audio Player
 ======================
 
-This is a basic search page that uses the Clarify PHP library, available here: https://github.com/Clarify/clarify-php
+This is an audio player extension for the jplayer.org audio player. It provides any easy way to show Clarify search results in the scrubber of the player so you can jump right to the relevant words.
+
+![Sample Player](/docs/sample_player.png?raw=true "Sample Player")
+
+
+Demo Page
+---------
+
+This demo includes a basic search page with the audio player. It uses the Clarify PHP library, available here: https://github.com/Clarify/clarify-php
 
 To use this:
 
