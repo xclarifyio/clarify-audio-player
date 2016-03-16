@@ -97,7 +97,7 @@ $bundles = $items['_links']['items'];
         <br>
         Player Example:
         <br>
-        <em>If no audio player appears, there was not a search result found.</em>
+        <em>If no audio player appears, there weren't any results found.</em>
         <br>
         <?php foreach ($bundles as $key => $_bundle) { ?>
             <div id="player_<?php echo $key; ?>_search_tags" class="o3v-search-tag-box"></div>
